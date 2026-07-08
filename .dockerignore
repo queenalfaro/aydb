@@ -1,0 +1,409 @@
+# ==============================================================================
+# Created by https://dockerignore.com/
+# COMMON TEMPLATE for Security
+# Website: https://dockerignore.com/
+# Repository: https://github.com/ronald2wing/.dockerignore
+# ==============================================================================
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# TEMPLATE OVERVIEW &amp; USAGE NOTES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# • TEMPLATE TYPE: COMMON TEMPLATE
+# • PURPOSE: Security patterns
+# • DESIGN PHILOSOPHY: Modular security patterns
+# • COMBINATION GUIDANCE: Combine with language or framework templates
+# • SECURITY CONSIDERATIONS: Critical — protects sensitive data
+# • BEST PRACTICES: Place first in .dockerignore
+# • OFFICIAL SOURCES: Docker best practices and community patterns
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Security &amp; Sensitive Data
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Environment Files
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+.env
+.env.*
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Cryptographic Keys
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+*.accdb
+*.acl
+*.asc
+*.auth
+*.authz
+*.cer
+*.cert
+*.confidential
+*.cred
+*.creds
+*.crl
+*.crt
+*.csr
+*.der
+*.frm
+*.gpg
+*.ibd
+*.jks
+*.key
+*.keystore
+*.mdb
+*.myd
+*.myi
+*.p12
+*.p7b
+*.p7c
+*.passwd
+*.password
+*.pem
+*.pfx
+*.pgp
+*.priv
+*.private
+*.pub
+*.pwd
+*.req
+*.secret
+*.secrets
+*.sig
+*.spc
+*.token
+*.truststore
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Cloud Credentials
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.aws/
+**/.azure/
+**/.gcloud/
+**/.kube/
+**/.terraform/
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# SSH &amp; Authentication
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.ssh/
+
+authorized_keys
+confidential*
+config/*.local.*
+config/secret.*
+credential*
+id_dsa
+id_dsa.pub
+id_ecdsa
+id_ecdsa.pub
+id_ed25519
+id_ed25519.pub
+id_rsa
+id_rsa.pub
+known_hosts
+local-*
+local.*
+local_*
+passwd
+private*
+pwd
+secret*
+settings.local.*
+ssh_config
+ssh_known_hosts
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Application Secrets
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/config/credentials.*
+**/config/secrets.*
+**/keys/
+**/passwords/
+**/private/
+**/secrets/
+
+.config
+.config.*
+.local
+.local.*
+.secret
+.secret.*
+.secrets
+.secrets.*
+
+*_tokens
+*password*
+
+apikeys.*
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Staging.json
+connectionstrings.config
+database.ini
+database.yml
+dbconfig.xml
+tokens.*
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Dev Configuration
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/config/development.*
+**/config/local.*
+**/config/staging.*
+**/config/test.*
+**/settings/development.*
+**/settings/local.*
+**/settings/staging.*
+**/settings/test.*
+
+docker-compose.dev.yml
+docker-compose.local.yml
+docker-compose.override.yml
+docker-compose.test.yml
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Database &amp; Storage
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/backups/
+**/dumps/
+**/exports/
+
+*.backup
+*.bak
+*.db
+*.db-journal
+*.dump
+*.sql
+*.sql.bz2
+*.sql.gz
+*.sql.xz
+*.sqlite
+# ==============================================================================
+# Created by https://dockerignore.com/
+# COMMON TEMPLATE for Docker
+# Website: https://dockerignore.com/
+# Repository: https://github.com/ronald2wing/.dockerignore
+# ==============================================================================
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# TEMPLATE OVERVIEW &amp; USAGE NOTES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# • TEMPLATE TYPE: COMMON TEMPLATE
+# • PURPOSE: Docker-specific patterns
+# • DESIGN PHILOSOPHY: Modular Docker patterns
+# • COMBINATION GUIDANCE: Combine with language or framework templates
+# • SECURITY CONSIDERATIONS: Should be excluded from images
+# • BEST PRACTICES: Exclude Docker files from builds
+# • OFFICIAL SOURCES: Docker best practices and community patterns
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Build Output
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.docker-build/
+**/docker-build/
+**/docker-build-output/
+
+docker-build.log
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Cache &amp; Temp
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.docker-tmp/
+**/docker-tmp/
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Logs &amp; Debug
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/docker-logs/
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Docker Files
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.docker/
+**/docker-cache/
+**/docker-context/
+**/docker-networks/
+**/docker-volumes/
+
+.dockercfg
+.dockerconfig
+.dockerconfig.json
+.dockerignore
+
+Dockerfile.dev
+Dockerfile.example
+Dockerfile.local
+Dockerfile.test
+
+docker-compose.ci.yml
+docker-compose.debug.yml
+docker-compose.dev.yml
+docker-compose.example.yml
+docker-compose.local.yml
+docker-compose.override.yml
+docker-compose.test.yml
+
+docker-security-scan.json
+docker-vulnerability-report.json
+grype-report.json
+snyk-report.json
+trivy-report.json
+# ==============================================================================
+# Created by https://dockerignore.com/
+# COMMON TEMPLATE for Git
+# Website: https://dockerignore.com/
+# Repository: https://github.com/ronald2wing/.dockerignore
+# ==============================================================================
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# TEMPLATE OVERVIEW &amp; USAGE NOTES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# • TEMPLATE TYPE: COMMON TEMPLATE
+# • PURPOSE: Git version control patterns
+# • DESIGN PHILOSOPHY: Modular Git patterns
+# • COMBINATION GUIDANCE: Combine with language or framework templates
+# • SECURITY CONSIDERATIONS: Should be excluded from images
+# • BEST PRACTICES: Exclude Git files from Docker builds
+# • OFFICIAL SOURCES: Docker best practices and community patterns
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Git Files
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.git/
+**/.git-crypt/
+**/.git-rewrite/
+
+.git-blame-ignore-revs
+.gitattributes
+.gitconfig
+.gitcredentials
+.gitkeep
+.gitmodules
+.gitreview
+# ==============================================================================
+# Created by https://dockerignore.com/
+# LANGUAGE TEMPLATE for Python
+# Website: https://www.python.org/
+# Repository: https://github.com/python/cpython
+# ==============================================================================
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# TEMPLATE OVERVIEW &amp; USAGE NOTES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# • TEMPLATE TYPE: LANGUAGE TEMPLATE
+# • PURPOSE: Python-specific patterns for Docker builds
+# • DESIGN PHILOSOPHY: Contains only Python-specific patterns (no security patterns)
+# • COMBINATION GUIDANCE: Combine with framework or common templates as needed
+# • SECURITY CONSIDERATIONS: Does NOT include security patterns (use common/security.dockerignore)
+# • BEST PRACTICES: Combine with security template for complete protection
+# • OFFICIAL SOURCES: Python community patterns and Docker best practices
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Build Artifacts
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.eggs/
+**/develop-eggs/
+**/eggs/
+**/parts/
+**/share/python-wheels/
+**/wheels/
+
+MANIFEST
+
+*$py.class
+*.egg
+*.egg-info/
+*.manifest
+*.mo
+*.pot
+*.py,cover
+*.py[cod]
+*.sage.py
+*.spec
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Cache &amp; Temporary
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.mypy_cache/
+**/.pyre/
+**/.pytype/
+**/.ruff_cache/
+**/__pycache__/
+**/cython_debug/
+**/downloads/
+
+.ipynb_checkpoints
+.installed.cfg
+
+celerybeat-schedule
+celerybeat.pid
+pip-delete-this-directory.txt
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Dependencies
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/__pypackages__/
+**/ENV/
+**/env/
+**/env.bak/
+**/venv/
+**/venv.bak/
+**/virtualenv/
+
+.venv/
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Logs &amp; Debug
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+pip-log.txt
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Testing
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.cover/
+**/.hypothesis/
+**/.nose/
+**/.nox/
+**/.pytest_cache/
+**/.tox/
+**/cover/
+
+.nosetests.xml
+
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+# Tools &amp; Configuration
+# ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+**/.hatch/
+**/.instance/
+**/.profile_default/
+**/.pybuilder/
+**/.pyenv/
+**/.pypackages/
+**/.uv/
+
+.dmypy.json
+.pdm.toml
+.Python
+.python-version
+.scrapy
+.webassets-cache
+
+
+*.creds.json

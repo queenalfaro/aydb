@@ -1,0 +1,28 @@
+{
+    "name": "Android YouDo Bot",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "aydb",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.analysis.extraPaths": [
+                    "/workspace/src"
+                ],
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "charliermarsh.ruff"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-python.mypy-type-checker"
+            ]
+        }
+    },
+    "remoteUser": "vscode",
+    "updateRemoteUserUID": true
+}

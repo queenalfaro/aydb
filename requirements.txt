@@ -1,0 +1,2 @@
+requests
+git+https://github.com/queenalfaro/firebase-messaging.git
