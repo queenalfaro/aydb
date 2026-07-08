@@ -3,7 +3,7 @@ import base64
 import json
 import hmac
 import hashlib
-from urllib.parse import urlparse, parse_qsl, unquote
+from urllib.parse import urlparse, parse_qsl, unquote, urlencode
 
 import requests
 
@@ -50,12 +50,33 @@ def generate_signature_headers(url: str, body = None) -> dict:
 if __name__ == "__main__":
     url = "https://api.youdo.com/v110/Service/GetConfig"
 
-    singature_headers = generate_signature_headers(url)
+    params = {
+        'Page': '1',
+        'PageSize': '50',
+        'q': '',
+        'onlySbr': 'false',
+        'onlyB2B': 'false',
+        'onlyVirtual': 'false',
+        'onlyVacancies': 'false',
+        'onlyShifts': 'false',
+        'noOffers': 'false',
+        'Category': '4194304',
+        'Status': 'Opened',
+        'lat': '59.939095',
+        'lng': '30.315868',
+        'radius': '50.0',
+        'searchRequestId': 'daf9fd13-8364-4bbb-b24c-c282c00ab029',
+    }
+    url = 'https://api.youdo.com/v110/tasks/tasks'
+
+    singature_headers = generate_signature_headers(f"{url}?{urlencode(params)}")
+    print(singature_headers)
+
     headers = {
         "Host": "api.youdo.com",
         "User-Agent": "28,1023,androidPhoneApp,1600x900,1.5,Redmi,23113RKC6C,7f2821773c5c1659,1783364599220",
         **singature_headers
     }
 
-    response = requests.get(url, headers=headers)
-    print(response.status_code, len(response.text), response.text[:128])
+    # response = requests.get(url, headers=headers)
+    # print(response.status_code, len(response.text), response.text[:128])

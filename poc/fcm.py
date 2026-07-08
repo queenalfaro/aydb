@@ -1,6 +1,7 @@
 import asyncio
 import time
 from typing import Any
+import json
 
 from firebase_messaging.fcmregister import FcmRegister, FcmRegisterConfig
 from firebase_messaging.fcmpushclient import FcmPushClient
@@ -13,6 +14,9 @@ MESSAGING_SENDER_ID = "830888382366"
 BUNDLE_ID = "com.sebbia.youdo"
 CHROME_VERSION = "94.0.4606.51"
 
+with open(".config.json") as f:
+    config = json.load(f)
+CREDS = config["fcm"]
 
 def on_notification(data: dict, persistent_id: str, context: Any) -> None:
     print("\n" + "="*60)
@@ -43,7 +47,7 @@ async def create_client():
     client = FcmPushClient(
         callback=on_notification,
         fcm_config=fcm_config,
-        credentials=None,
+        credentials=CREDS,
         credentials_updated_callback=credentials_updated_callback,
     )
 

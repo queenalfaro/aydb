@@ -5,23 +5,15 @@ from urllib.parse import urlparse
 import requests as requests_lib
 
 
-CAPTCHA_API_KEY = input("2CAPTCHA_API_KEY: ")
-PROXY_URL = input("PROXY: ")
-
 USER_AGENT = "28,1023,androidPhoneApp,1600x900,1.5,Redmi,23113RKC6C,7f2821773c5c1659,1783364599220"
 
 CAPTCHA_SITE_KEY = "ysc1_fCg9cqGdvGHetWnniD6z0glqM0gvjnhRDzxsSke8e4d2b52b" 
 CAPTCHA_PAGE_URL = "https://youdo.com/web-view-signin?authProviders=SOCIAL_VK_ENABLED,SOCIAL_OK_ENABLED,SOCIAL_MAIL_ENABLED,SOCIAL_GOOGLE_ENABLED,PROMO_CODE_INPUT_AUTH_ENABLED"
 
 
-requests = requests_lib.Session()
-requests.proxies = {
-    "http": PROXY_URL,
-    "https": PROXY_URL
-}
-
-
-def parse_proxy_url(proxy_url: str) -> dict:
+def parse_proxy_url(proxy_url: str | None) -> dict:
+    if not proxy_url:
+        return {}
     if "://" not in proxy_url:
         proxy_url = "http://" + proxy_url
 
@@ -36,14 +28,21 @@ def parse_proxy_url(proxy_url: str) -> dict:
     }
 
 
-def get_smartcaptcha_token():
+def get_smartcaptcha_token(captcha_api_key: str, proxy_url: str | None = None):
+
+    requests = requests_lib.Session()
+    requests.proxies = {
+        "http": proxy_url,
+        "https": proxy_url
+    } if proxy_url else None
+
     create_task_url = "https://api.2captcha.com/createTask"
     
-    proxy_parts = parse_proxy_url(PROXY_URL)
+    proxy_parts = parse_proxy_url(proxy_url)
 
     create_task_url = "https://api.2captcha.com/createTask"
     payload = {
-        "clientKey": CAPTCHA_API_KEY,
+        "clientKey": captcha_api_key,
         "task": {
             "type": "YandexSmartCaptchaTask", 
             "websiteURL": CAPTCHA_PAGE_URL,
@@ -64,7 +63,7 @@ def get_smartcaptcha_token():
 
     get_result_url = "https://api.2captcha.com/getTaskResult"
     result_payload = {
-        "clientKey": CAPTCHA_API_KEY,
+        "clientKey": captcha_api_key,
         "taskId": task_id
     }
 
@@ -84,7 +83,9 @@ def get_smartcaptcha_token():
 
 
 def main():
-    print("Captcha token: ", get_smartcaptcha_token())
+    CAPTCHA_API_KEY = input("2CAPTCHA_API_KEY: ")
+    PROXY_URL = input("PROXY: ")
+    print("Captcha token: ", get_smartcaptcha_token(CAPTCHA_API_KEY, PROXY_URL))
 
 if __name__ == "__main__":
     main()
