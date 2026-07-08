@@ -22,7 +22,7 @@ class API(Auth, FCM, GetConfig, Signature, Tasks):
     def __init__(self) -> None:
         super().__init__()
 
-        if not self.has_config:
+        if not self.has_creds:
             self.device_id = os.urandom(8).hex()
             self.adv_id = str(uuid.uuid4())
             self.install_ts = int(time.time() * 1000)

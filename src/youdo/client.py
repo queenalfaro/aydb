@@ -4,30 +4,30 @@ from typing import Self
 
 from .api import API
 from .captcha import Captcha
-from .config_manager import ConfigManager
+from .creds_manager import CredsManager
 from .fcm import FCM
 
 
-class Client(API, FCM, Captcha, ConfigManager):
+class Client(API, FCM, Captcha, CredsManager):
 
     WORKDIR = "."
-    CONFIG_FILENAME = ".config.json"
+    CREDS_FILENAME = ".creds.json"
 
     def __init__(
         self,
         phone: str | None = None,
         proxy: str | None = None,
         two_captcha_api_key: str | None = None,
-        config_filename: str = CONFIG_FILENAME,
+        creds_filename: str = CREDS_FILENAME,
         workdir: str = WORKDIR,
     ) -> None:
 
         self.workdir = Path(workdir)
-        self.config_filename = config_filename
+        self.creds_filename = creds_filename
 
         super().__init__()
 
-        if not self.has_config:
+        if not self.has_creds:
 
             if phone:
                 self.phone = phone
@@ -47,10 +47,10 @@ class Client(API, FCM, Captcha, ConfigManager):
     @classmethod
     async def create(cls, *args, **kwargs) -> Self:
         instance = cls(*args, **kwargs)
-        if not instance.has_config:
+        if not instance.has_creds:
             await instance.register()
-            instance._set_config()
-            instance.has_config = True
+            instance._set_creds()
+            instance.has_creds = True
         return instance
 
     async def register(self) -> None:

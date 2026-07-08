@@ -61,7 +61,7 @@ class FCM():
         print("="*60 + "\n")
 
     def fmc_credentials_updated_callback(self, creds):
-        self._set_config()
+        self._set_creds()
 
     async def checkin_or_register(self) -> None:
         await self.fcm_client.checkin_or_register()
