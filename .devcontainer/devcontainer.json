@@ -13,13 +13,17 @@
                     "/workspace/src"
                 ],
                 "editor.formatOnSave": true,
-                "editor.defaultFormatter": "charliermarsh.ruff"
+                "editor.defaultFormatter": "charliermarsh.ruff",
+                "python.languageServer": "Pylance",
+                "python.analysis.typeCheckingMode": "off",
+                "mypy-type-checker.reportingScope": "workspace",
+                "mypy-type-checker.preferDaemon": true
             },
             "extensions": [
                 "ms-python.python",
                 "ms-python.vscode-pylance",
                 "charliermarsh.ruff",
-                "ms-python.mypy-type-checker"
+                "ms-python.mypy-type-checker@2026.4.0"
             ]
         }
     },
