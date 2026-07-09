@@ -1,0 +1,19 @@
+services:
+  aydb-prod:
+    image: ${DOCKER_IMAGE}
+    restart: unless-stopped
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "3"
