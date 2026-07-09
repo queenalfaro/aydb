@@ -3,7 +3,7 @@ import asyncio
 import logging
 from typing import Any
 
-from firebase_messaging.android_fcmregister import AndroidFcmRegister, AndroidRegisterConfig
+from firebase_messaging.android_fcmregister import AndroidRegisterConfig
 from firebase_messaging.android_fcmpushclient import AndroidPushClient
 
 
@@ -24,14 +24,14 @@ class FCM():
     APP_VERSION_NAME = "4.0.261",
 
     def __init__(self) -> None:
-        super().__init__()             
+        super().__init__()
 
         fcm_config = AndroidRegisterConfig(
             project_id=self.PROJECT_ID,
             app_id=self.APP_ID,
             api_key=self.API_KEY,
-            messaging_sender_id=self.MESSAGING_SENDER_ID,   
-            bundle_id=self.BUNDLE_ID,   
+            messaging_sender_id=self.MESSAGING_SENDER_ID,
+            bundle_id=self.BUNDLE_ID,
             cert_sha1=self.CERT_SHA1,
             app_name_hash=self.FIREBASE_APP_NAME_HASH,
             app_ver=self.APP_VERSION,

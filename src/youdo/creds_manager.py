@@ -15,7 +15,8 @@ class CredsManager:
 
         self.phone = self.creds.get("base", {}).get("phone")
         self.proxy = self.creds.get("base", {}).get("proxy")
-        self.two_captcha_api_key = self.creds.get("base", {}).get("two_captcha_api_key")
+        self.two_captcha_api_key = self.creds.get(
+            "base", {}).get("two_captcha_api_key")
 
         self.device_id = self.creds.get("api", {}).get("device_id")
         self.adv_id = self.creds.get("api", {}).get("adv_id")
@@ -31,6 +32,7 @@ class CredsManager:
         if os.path.exists(self.workdir / self.creds_filename):
             with open(self.workdir / self.creds_filename, "r", encoding="utf-8") as f:
                 self.creds = json.load(f)
+        return self.creds
 
     def _set_creds(self) -> None:
         self.creds = {
