@@ -1,2 +1,3 @@
-requests
+dotenv
 git+https://github.com/queenalfaro/firebase-messaging.git
+requests

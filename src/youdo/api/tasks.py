@@ -2,6 +2,7 @@
 from urllib.parse import urlencode
 import uuid
 
+
 class Tasks:
 
     def get_tasks(
@@ -44,15 +45,8 @@ class Tasks:
             **self.gen_signature_headers(f"{url}?{urlencode(params)}")
         }
 
-        headers.update({
-            'Msid': '96110f5f-989e-4588-b241-16cd620f45b1',
-            'User-Agent': '28,1023,androidPhoneApp,1600x900,1.5,Redmi,23113RKC6C,7f2821773c5c1659,1783364599220',
-            'X-Deviceid': '7f2821773c5c1659',
-            'X-Advid': '342d3088-a85f-456a-ab35-c8c16e3331a9',
-            'X-Visitorid': '9985833256922135461',
-        })
-
-        response = self.http_session.get(url, params=params, headers=headers, timeout=15)
+        response = self.http_session.get(
+            url, params=params, headers=headers, timeout=15)
         print(response.status_code, response.text)
         response_json = response.json()
 
@@ -74,7 +68,8 @@ class Tasks:
             **self.gen_signature_headers(f"{url}?{urlencode(params)}")
         }
 
-        response = self.http_session.get(url, params=params, headers=headers, timeout=15)
+        response = self.http_session.get(
+            url, params=params, headers=headers, timeout=15)
         response_json = response.json()
 
         return response_json

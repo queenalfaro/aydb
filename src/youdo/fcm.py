@@ -45,6 +45,9 @@ class FCM():
             credentials_updated_callback=self.fmc_credentials_updated_callback,
         )
 
+        self._queue = asyncio.Queue()
+        self._loop = None
+
     @property
     def fcm_token(self) -> str:
         return self.fcm_client.credentials["fcm"]["registration"]["token"]
@@ -60,6 +63,12 @@ class FCM():
             print(f"  {k}: {v}")
         print("="*60 + "\n")
 
+        if self._loop and self._queue:
+            self._loop.call_soon_threadsafe(
+                self._queue.put_nowait,
+                (data, persistent_id)
+            )
+
     def fmc_credentials_updated_callback(self, creds):
         self._set_creds()
 
@@ -69,11 +78,16 @@ class FCM():
     async def start_listener(self):
         print(f"\nЗапустил приемник уведомлений...\n")
 
+        self._loop = asyncio.get_running_loop()
+
         try:
             await self.fcm_client.start()
 
             while True:
-                await asyncio.sleep(3600)
+                raw_new_task = await self._queue.get()
+                yield raw_new_task
+                self._queue.task_done()
+
         except (KeyboardInterrupt, asyncio.CancelledError):
             print("\n[*] Завершение работы клиента...")
         finally:
