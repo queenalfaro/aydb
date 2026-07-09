@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    volumes:
+      - ./.creds.json:/app/.creds.json
     deploy:
       resources:
         limits:

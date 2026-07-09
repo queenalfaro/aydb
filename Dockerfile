@@ -33,7 +33,7 @@ RUN pip install --no-cache-dir /wheels/* && rm -rf /wheels
 COPY --chown=appuser:appgroup src/ ./src/
 
 COPY --chown=appuser:appgroup docker-compose.prod.yml ./docker-compose.prod.yml
-# COPY --chown=appuser:appgroup .env.example ./.env.example
+COPY --chown=appuser:appgroup .env.example ./.env.example
 
 USER appuser
 
